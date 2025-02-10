@@ -19,6 +19,7 @@ import cae15 from "./cae-assets/15.jpg";
 import cae16 from "./cae-assets/16.jpg";
 import cae17 from "./cae-assets/17.jpg";
 import cae18 from "./cae-assets/18.jpg";
+import flowers from "./cae-assets/pp.png";
 
 const images = [
      cae1, cae2, cae3, cae5, cae6, cae7, cae8, caeandme, dinko, cae11, cae12, cae13, cae14, cae15, cae16, cae17, cae18,
@@ -33,8 +34,8 @@ export default function Page() {
      const gifHeight = 200;
 
      const numImages = images.length;
-     const [imagePositions, setImagePositions] = useState([]);
-     const [imageVelocities, setImageVelocities] = useState([]);
+     const [imagePositions, setImagePositions] = useState<{ x: number; y: number }[]>([]);
+     const [imageVelocities, setImageVelocities] = useState<{ x: number; y: number }[]>([]);
      const imageRefs = useRef(Array(numImages).fill(null));
      const [imageHeights, setImageHeights] = useState(Array(numImages).fill(0));
 
@@ -61,22 +62,24 @@ export default function Page() {
      }, [numImages]);
 
      useEffect(() => {
-          const handleImageLoad = (index) => () => {
+          const handleImageLoad = (index: number) => () => {
                const newHeights = [...imageHeights];
                newHeights[index] = imageRefs.current[index].clientHeight;
                setImageHeights(newHeights);
           };
 
+          const currentImageRefs = imageRefs.current;
+
           images.forEach((_, index) => {
-               if (imageRefs.current[index]) {
-                    imageRefs.current[index].addEventListener("load", handleImageLoad(index));
+               if (currentImageRefs[index]) {
+                    currentImageRefs[index].addEventListener("load", handleImageLoad(index));
                }
           });
 
           return () => {
                images.forEach((_, index) => {
-                    if (imageRefs.current[index]) {
-                         imageRefs.current[index].removeEventListener("load", handleImageLoad(index));
+                    if (currentImageRefs[index]) {
+                         currentImageRefs[index].removeEventListener("load", handleImageLoad(index));
                     }
                });
           };
@@ -176,14 +179,10 @@ export default function Page() {
                {yesPressed ? (
                     <>
                          <img src={gif} alt="Celebration GIF" />
-                         <div className="my-4 text-4xl font-bold">yaYAYAYAAYAYYYAAY!!! u made the right choice</div>
-                         <button
-                              className="mr-4 rounded bg-green-500 px-2 py-1 font-bold text-white hover:bg-green-700"
-                              style={{ fontSize: 12, zIndex: 5 }}
-                              onClick={() => setYesPressed(true)}
-                         >
-                              click here
-                         </button>
+                         <div className="my-4 text-4xl font-bold">yaYAYAYAAYAYYYAAY!!! thank you hehehe lets go to the zoo and i signed us up for this at 3:30 and reserved dinner at 6:30 at <a style={{color: "red"}} className="red" href="https://www.bixi.beer/menu">here</a></div>
+                          <div className="my-4 text-4xl font-bold">i heard its good its in logan square </div>
+                         <img src={flowers}></img>
+
                     </>
                ) : (
                     <>
