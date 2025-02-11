@@ -4,7 +4,12 @@ on:
  push:
    branches:
      - main  # Or your main branch
-
+ workflow_dispatch:
+   inputs:
+     branch:
+       description: 'Branch to deploy (optional, defaults to gh-pages)'
+       required: false
+       default: 'main'
 jobs:
  deploy:
    runs-on: ubuntu-latest
