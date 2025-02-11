@@ -179,7 +179,7 @@ export default function Page() {
                {yesPressed ? (
                     <>
                          <img src={gif} alt="Celebration GIF" />
-                         <div className="my-4 text-4xl font-bold">yaYAYAYAAYAYYYAAY!!! thank you here's what we're doing: ~12:00: lunch in suburbs or city, ~2:00 go to the zoo to meet ur monkey friends, 3:00: go to the class that's in the pic below, 6:30: dinner at  <a style={{color: "red"}} className="red" href="https://www.bixi.beer/menu">here</a> after dinner: sweet treats  in logan square if you've been really good</div>
+                         <div className="my-4 text-4xl font-bold">yaYAYAYAAYAYYYAAY!!! thank you here's what we're doing: ~12:00: lunch in suburbs or city, ~2:00 go to the zoo to meet ur monkey friends, 3:00: go to painting class that's in the pic below in logan square, reservation at 6:30: dinner at  <a style={{color: "red"}} className="red" href="https://www.bixi.beer/menu">here</a> after dinner: sweet treats  in logan square if you've been really good ~11pm: i start beating u up</div>
                          <img src={flowers}></img>
 
                     </>
